@@ -7,14 +7,19 @@ const props=defineProps({
 });
 const blogID=props.blogID;
 const blog=ref([]);
+const fetchingComplete=ref(false);
+const fetchingError=ref(false);
 
 async function fetchPost(blogID){
     try{
         let response= await axios.get('/api/blog/'+blogID+'');
         blog.value=response.data;
+        fetchingComplete.value=true;
     }
     catch(err){
         console.log(err.message);
+        fetchingError.value=true;
+        fetchingComplete.value=true;
     }
 }
 
@@ -37,6 +42,10 @@ onMounted(()=>{
         <li class="list-group-item">Author: <span class="text-capitalize">{{blog[0].user.name}}</span></li>
         <li class="list-group-item">Written On: {{blog[0].created_at}}</li>
     </ul>
+    </div>
+
+    <div v-if="!fetchingComplete && !fetchingError">
+    Loading...
     </div>
 
 
