@@ -11,4 +11,8 @@ class BlogController extends Controller
         $blogs=Blog::with('user')->get();
         return $blogs;
     }
+    public function blogPost($blogID){
+        $blog=Blog::with('user')->where('id',$blogID)->get();
+        return $blog;
+    }
 }
