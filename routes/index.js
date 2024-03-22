@@ -4,6 +4,7 @@ import BlogView from '../resources/views/pages/blogView.vue';
 import LoginView from '../resources/views/pages/loginView.vue';
 import RegisterView from '../resources/views/pages/registerView.vue';
 import DashboardView from '../resources/views/pages/dashboardView.vue';
+import blogPostView from '../resources/views/pages/blogPostView.vue';
 
 const routes=[
 	{
@@ -30,6 +31,12 @@ const routes=[
 		path:'/dashboard',
 		component:DashboardView,
 		name:'Dashboard'	
+	},
+	{
+		path:'/blog/:blogID',
+		component:blogPostView,
+		name:'blogpost',
+		props:true
 	}
 ];
 
