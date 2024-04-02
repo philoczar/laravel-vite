@@ -3,7 +3,6 @@ const props = defineProps({
     blogData: Object
 });
 const blog=props.blogData;
-console.log(blog);
 </script>
 <template>
     <div class="card mb-4">

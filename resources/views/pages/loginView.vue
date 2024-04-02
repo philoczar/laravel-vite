@@ -2,11 +2,12 @@
 import {ref} from 'vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
-import {useAuthStore} from '../../../stores/auth';
+import {useUserStore} from '../../../stores/user';
 import { storeToRefs } from 'pinia';
 const router = useRouter();
-const authStore=useAuthStore();
-const {user,permissions,roles,isAuthenticated}=storeToRefs(authStore);
+const userStore=useUserStore();
+const {createUser}=userStore;
+const {user,permissions,roles,isAuthenticated}=storeToRefs(userStore);
 
 const email=ref('');
 const password=ref('');
@@ -28,12 +29,9 @@ async function loginUser(e){
       await axios.get("/sanctum/csrf-cookie");
       await axios.post('/api/login',data);
       let response = await axios.get("/api/user");
-      user.value=response.data.user;
-      permissions.value=response.data.permissions;
-      roles.value=response.data.roles;
-      isAuthenticated.value=true;
       loginBt.value.disabled=false;
-      router.push({ name: 'Dashboard' });
+      createUser(response.data.user, response.data.permissions, response.data.roles);
+      router.push({ name: 'Home' });
     } catch (err) {
       loginEmailError.value=(err.response.data.errors.email !==undefined) ? err.response.data.errors.email : loginEmailError.value;
       loginPasswordError.value=(err.response.data.errors.password !==undefined) ? err.response.data.errors.password : loginPasswordError.value;
@@ -85,4 +83,4 @@ async function loginUser(e){
     </div>
   </div>
 </div>
-</template>
+</template>../../../stores/user

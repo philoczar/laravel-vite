@@ -1,18 +1,18 @@
 <script setup>
 import {ref} from 'vue';
 import {storeToRefs} from 'pinia';
-import { useAuthStore } from '../../../stores/auth';
+import { useUserStore } from '../../../stores/user';
 import {useRouter} from 'vue-router';
 
-const authStore=useAuthStore();
-const {isAuthenticated,user} = storeToRefs(authStore);
+const userStore=useUserStore();
+const{destroyUser}=userStore;
+const {isAuthenticated,user,roles,permissions} = storeToRefs(userStore);
 const router=useRouter();
 
 async function logoutUser(){
    try{
       await axios.post('/api/logout');
-      isAuthenticated.value=false;
-      user.value=null;
+      destroyUser();
       router.push({name:'Login'});
    }
    catch(err){
@@ -32,9 +32,6 @@ async function logoutUser(){
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item" v-if="!isAuthenticated">
                 <router-link class="nav-link" aria-current="page" to="/">Home</router-link>
-                </li>
-                <li class="nav-item" v-if="isAuthenticated">
-                <router-link class="nav-link" aria-current="page" to="/dashboard">Dashboard</router-link>
                 </li>
                 <li class="nav-item">
                 <router-link class="nav-link" to="/blog">Blog</router-link>
@@ -69,4 +66,4 @@ async function logoutUser(){
             </div>
         </div>
         </nav>
-</template>
+</template>../../../stores/user

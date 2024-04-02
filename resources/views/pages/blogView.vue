@@ -47,4 +47,4 @@ const customBlogs=computed(()=>{
     </div>
 
 </div>
-</template>../components/blogCard.vue
+</template>
