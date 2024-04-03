@@ -4,7 +4,6 @@ import {storeToRefs} from 'pinia';
 import { useUserStore } from '../../stores/user';
 import Nav from '../views/components/nav.vue';
 
-console.log(Image);
 const userStore= useUserStore();
 const {isAuthenticated} = storeToRefs(userStore);
 </script>
