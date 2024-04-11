@@ -45,7 +45,7 @@ Route::post('/login',[AuthController::class, 'login']);
 Route::post('/logout',[AuthController::class, 'logout']);
 Route::get('/blog',[BlogController::class, 'index']);
 Route::get('/blog/{blogID}',[BlogController::class, 'blogPost']);
-Route::post('/item/create',[ItemController::class, 'create']);
+Route::post('/item/create',[ItemController::class, 'create'])->middleware('auth');
 Route::get('/item/fetch',[ItemController::class,'fetch']);
 Route::get('/item/{itemID}',[ItemController::class,'show']);
 

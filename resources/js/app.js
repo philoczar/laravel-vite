@@ -1,9 +1,9 @@
-import './bootstrap';
+//import './bootstrap';
 import { createApp } from 'vue';
 import App from './App.vue';
 import {createPinia} from 'pinia';
 import router from '../../routes/';
-import '../../bootstrap/css/bootstrap.css';
+//import '../../bootstrap/css/bootstrap.css';
 
 //vuetify
 import '@mdi/font/css/materialdesignicons.css'
@@ -16,6 +16,9 @@ const vuetify = createVuetify({
   components,
   directives,
   ssr: true,
+  theme: {
+    defaultTheme: 'dark'
+  }
 });
 const pinia=createPinia();
 const app = createApp(App);
