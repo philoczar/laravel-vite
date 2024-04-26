@@ -29,53 +29,55 @@ const items=ref([]);
 </script>
 
 <template>
-    <div class="d-flex align-center justify-space-around">
-        <div class="col col-md-11" style="min-height:3000px;">
-
-            <v-card
-                        
+    <v-container fluid>
+        <v-row dense>
+            <v-col 
+            cols="11"
+            sm="12"
             >
-                <v-container fluid>
-                    <v-row dense>
-                    <v-col
-                    v-for="card in customItems"
-                    :key="card.title"
-                    :cols="card.flex"
-                    >
-                    <v-card>
-                        <v-img
-                        :src="'http://[::1]:5173/public/uploads/'+card.src"
-                        class="align-end"
-                        gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-                        height="200px"
-                        cover
+                <v-card
+                            
+                >
+                    <v-container>
+                        <v-row dense>
+                        <v-col
+                        v-for="card in customItems"
+                        :key="card.title"
+                        :cols="card.flex"
                         >
-                        <v-card-title class="text-white" v-text="card.title"></v-card-title>
-                        </v-img>
+                        <v-card>
+                            <v-img
+                            :src="'http://[::1]:5173/public/uploads/'+card.src"
+                            class="align-end"
+                            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+                            height="200px"
+                            cover
+                            >
+                            <v-card-title class="text-white" v-text="card.title"></v-card-title>
+                            </v-img>
 
-                        <v-card-text>
-                            <div>Whitehaven Beach</div>
+                            <v-card-text>
+                                <div>Whitehaven Beach</div>
 
-                            <div>Whitsunday Island, Whitsunday Islands</div>
-                        </v-card-text>
+                                <div>Whitsunday Island, Whitsunday Islands</div>
+                            </v-card-text>
 
-                        <v-card-actions>
-                        <v-spacer></v-spacer>
+                            <v-card-actions>
+                            <v-spacer></v-spacer>
 
-                        <v-btn color="surface-variant" icon="mdi-heart" size="small" variant="text"></v-btn>
+                            <v-btn color="surface-variant" icon="mdi-heart" size="small" variant="text"></v-btn>
 
-                        <v-btn color="surface-variant" icon="mdi-bookmark" size="small" variant="text"></v-btn>
+                            <v-btn color="surface-variant" icon="mdi-bookmark" size="small" variant="text"></v-btn>
 
-                        <v-btn color="surface-variant" icon="mdi-share-variant" size="small" variant="text"></v-btn>
-                        </v-card-actions>
-                    </v-card>
-                    </v-col>
-                    </v-row>
-                </v-container>
-            </v-card>
-            
-        </div>
-    </div>
-    
+                            <v-btn color="surface-variant" icon="mdi-share-variant" size="small" variant="text"></v-btn>
+                            </v-card-actions>
+                        </v-card>
+                        </v-col>
+                        </v-row>
+                    </v-container>
+                </v-card>
 
+            </v-col>
+        </v-row>
+    </v-container>
 </template>

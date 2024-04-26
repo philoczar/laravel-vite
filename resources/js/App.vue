@@ -16,6 +16,22 @@ const theme=useTheme();
 function toggleTheme () {
   theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
 }
+
+
+const open=ref(['Flowers']);
+const flowersCategory=ref([
+        ['Flower1', 'mdi-account-multiple-outline','/blog'],
+      ]);
+const addOptions=ref([
+   ['Flower', 'mdi-account-multiple-outline','/newflower'],
+   ['Category', 'mdi-account-multiple-outline','/newcategory'],
+]);
+/*const cruds=ref([
+        ['Create', 'mdi-plus-outline'],
+        ['Read', 'mdi-file-outline'],
+        ['Update', 'mdi-update'],
+        ['Delete', 'mdi-delete'],
+      ]);*/
 </script>
 
 
@@ -39,34 +55,78 @@ function toggleTheme () {
         @click="rail = false"
         class="d-none d-sm-block"
       >
-        <v-list-item
-          prepend-avatar="https://randomuser.me/api/portraits/men/85.jpg"
-          title="John Leider"
-          nav
-        >
-          <template v-slot:append>
-            <v-btn
-              icon="mdi-chevron-left"
-              variant="text"
-              @click.stop="rail = !rail"
-            ></v-btn>
+        
+      <v-list-item
+        prepend-avatar="https://randomuser.me/api/portraits/men/85.jpg"
+        title="John Leider"
+        nav
+      >
+        <template v-slot:append>
+          <v-btn
+            icon="mdi-chevron-left"
+            variant="text"
+            @click.stop="rail = !rail"
+          ></v-btn>
+        </template>
+      </v-list-item>
+
+      <v-divider></v-divider>
+
+
+
+    <v-list v-model:opened="open" density="compact" nav>
+
+      <v-list-item prepend-icon="mdi-home-city" title="Home" value="home" to="/"></v-list-item>
+
+      <v-list-group value="New">
+          <template v-slot:activator="{ props }">
+            <v-list-item
+              v-bind="props"
+              prepend-icon="mdi-account-circle"
+              title="New"
+            ></v-list-item>
           </template>
-        </v-list-item>
 
-        <v-divider></v-divider>
+          <v-list-item
+            v-for="([title, icon, to], i) in addOptions"
+            :key="i"
+            :prepend-icon="icon"
+            :title="title"
+            :value="title"
+            :to="to"
+          ></v-list-item>
+      </v-list-group>
 
-        <v-list density="compact" nav>
-          <v-list-item prepend-icon="mdi-home-city" title="Home" value="home" to="/"></v-list-item>
-          <v-list-item prepend-icon="mdi-account" title="My Account" value="account" to="/blog"></v-list-item>
-          <v-list-item prepend-icon="mdi-account-group-outline" title="Users" value="users"></v-list-item>
-        </v-list>
+      <v-list-group value="Flowers">
+          <template v-slot:activator="{ props }">
+            <v-list-item
+              v-bind="props"
+              prepend-icon="mdi-account-circle"
+              title="Flowers"
+            ></v-list-item>
+          </template>
+
+          <v-list-item
+            v-for="([title, icon, to], i) in flowersCategory"
+            :key="i"
+            :prepend-icon="icon"
+            :title="title"
+            :value="title"
+            :to="to"
+          ></v-list-item>
+      </v-list-group>
+
+      
+    </v-list>
+
+
       </v-navigation-drawer>
 
       <v-app-bar v-if="isAuthenticated">
 
       </v-app-bar>
 
-      <v-main style="min-height:500px;">
+      <v-main>
          <router-view/>
       </v-main>
 

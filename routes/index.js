@@ -15,6 +15,8 @@ import RegisterView from '../resources/views/pages/registerView.vue';
 import BlogPostView from '../resources/views/pages/blogPostView.vue';
 import ItemCreateView from '../resources/views/pages/itemCreateView.vue';
 import ItemView from '../resources/views/pages/itemView.vue';
+import NewCategoryView from '../resources/views/pages/newCategoryView.vue';
+import NewFlowerView from '../resources/views/pages/newFlowerView.vue';
 
 
 
@@ -62,6 +64,16 @@ const routes=[
 		component:ItemView,
 		name:'ItemView',
 		props:true
+	},
+	{
+		path:'/newcategory',
+		component:NewCategoryView,
+		name:'NewCategory'
+	},
+	{
+		path:'/newflower',
+		component:NewFlowerView,
+		name:'NewFlower'
 	}
 ];
 

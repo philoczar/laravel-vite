@@ -17,7 +17,7 @@ const vuetify = createVuetify({
   directives,
   ssr: true,
   theme: {
-    defaultTheme: 'dark'
+    defaultTheme: 'light'
   }
 });
 const pinia=createPinia();
