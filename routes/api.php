@@ -40,13 +40,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
         'roles'=>$roles
     );
 });
-
-Route::post('/categoryplus',[CategoryController::class,'newCategory']);
 Route::post('/register',[AuthController::class, 'register']);
 Route::post('/login',[AuthController::class, 'login']);
 Route::post('/logout',[AuthController::class, 'logout']);
 Route::get('/blog',[BlogController::class, 'index']);
 Route::get('/blog/{blogID}',[BlogController::class, 'blogPost']);
-Route::post('/item/create',[ItemController::class, 'create'])->middleware('auth');
+Route::post('/item/create',[ItemController::class, 'create']);
 Route::get('/item/fetch',[ItemController::class,'fetch']);
 Route::get('/item/{itemID}',[ItemController::class,'show']);
+Route::post('/addCategoryi',[CategoryController::class,'newCategory']);

@@ -10,16 +10,13 @@ const loading=ref(false);
 const categoryName=ref(null);
 
 async function addCategoy(){
-    const data=new FormData();
-    data.append('categoryName',categoryName.value);
     try{
-        let response= await axios.post("/api/categoryplus",data);//await axios.post('/api/addCategory',data);
-        console.log(response.data);
+        let response= await axios.post("/api/addCategoryi");
+        console.log(response);
     }
     catch(err){
         console.log(err.message);
     }
-    
 }
 
 </script>
